@@ -1,0 +1,30 @@
+Creating a Pokemon class
+    We want to show a list of pokemon on the screen, show their names
+    We need a model to store the pokemon name and index. We'll create a Pokedex class'
+    We use the exclamation point because at some point it will have a name, we'll guarantee it. Can't have a Pokemon without a name so there's no point putting a question mark there, because we know we're going to have it'
+
+Next build the layout in Main.storyboard
+
+We have a collection view but how do we make the image and label change in the collection view cell? We need to make a custom collection view cell that has that information in it. Create a new PokeCell customviewcell file in a View folder. We are going to create a custom collection view cell class.
+In this file, we know we're going to need an image because every cell has an image and a label so we create an IBoutlet for the image and label.
+We then need to store a Pokemon object so whenever a new cell is created we have an actual class that we're using to hold the data so that we don't have to recopy the name etc data all over the place.
+We then need to assign these in the future so we create a configure cell function. Name it configureCell to configure the cell and set it up. Pass the Pokemon object and grab stuff from it.
+After the custom collection view cell class has been created, we need to tie in the IBOutlets to the story board. Change the Custom View cell to a the PokeCell class and then drag the IBoutlets to the storyboard by right clicking.
+
+Next we need to get all this information cell. You must be creating custom view cells frequently. Don't put it in the ViewController. Break things down.
+
+We need to set up the view controller to work with collection views. First remember to set the Identifier in the storyboard because it will be referred to. In this case the Identifier is "PokeCell"
+"We need to set up the protocols, UICollectionViewDelegate and UICollectionViewDataSource and UICollectionViewDelegateFlowLayout (for a grid based layout). We will only have one section, but if we were to group the items based on type then you would use more than one section.
+dequeueReusableCellWithReuseIdentifier explanation: what this does is like a tableview where it reuses the cell so that it doesn't create 718 new views, it will create however many is on the screen and reuse them over and over. You effectively clean them out and put new stuff in them. When we say dequeue we mean grab a cell that's not on the screen right now and put stuff in it and put it back on the screen to reuse it. Dequeue one by the id "PokeCell" and indexPath is the current index of the row and cast it as our PokeCell.
+Once we've set the collectionView methods we need to set the delegates. We also need our collection view! If we don't set the functions:
+
+collection.delegate = self
+collection.dataSource = self
+
+then none of the collectionView functions will not be called. They need to be assigned based on the protocols.
+Remember to connect the outlet that we created. Go into the storyboard and control drag the ViewController to the Collection view cell
+
+Now parse the pokemon csv file. Create a function in the ViewController.
+
+
+
